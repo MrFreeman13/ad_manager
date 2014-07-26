@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140726170029) do
+ActiveRecord::Schema.define(version: 20140726193126) do
 
   create_table "banners", force: true do |t|
     t.string   "name"
@@ -22,7 +22,12 @@ ActiveRecord::Schema.define(version: 20140726170029) do
     t.integer  "max_views"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "platform_id"
   end
+
+  add_index "banners", ["clicks"], name: "index_banners_on_clicks"
+  add_index "banners", ["max_views"], name: "index_banners_on_max_views"
+  add_index "banners", ["views"], name: "index_banners_on_views"
 
   create_table "platforms", force: true do |t|
     t.string   "name"
