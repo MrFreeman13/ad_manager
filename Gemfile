@@ -24,6 +24,11 @@ gem 'spring', '1.1.3',       group: :development
 
 gem 'devise', '3.2.4'
 
+gem 'therubyracer', '0.12.1'
+gem 'less-rails', '2.5.0'
+gem 'twitter-bootstrap-rails', '2.2.8'
+
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'annotate', '~> 2.6.0'
