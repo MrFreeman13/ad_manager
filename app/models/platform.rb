@@ -10,5 +10,7 @@
 #
 
 class Platform < ActiveRecord::Base
-  has_many :banners
+  has_many :banners, dependent: :destroy
+
+  validates_presence_of :name, :url
 end

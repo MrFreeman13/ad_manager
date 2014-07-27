@@ -1,0 +1,27 @@
+<h1>All platforms</h1>
+
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>Platform name</th>
+    <th>Url</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @platforms.each do |platform| %>
+      <tr>
+        <td><%= link_to platform.name, platform_banners_path(platform.id) %></td>
+        <td><%= platform.url %></td>
+        <td><%= link_to 'Edit', edit_platform_path(platform) %> <%= link_to 'Destroy', platform, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+
+<br>
+
+<%= link_to 'New Platform', new_platform_path %><br />
+
