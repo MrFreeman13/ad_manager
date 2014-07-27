@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :platforms do
-    resources :banners
+    resources :banners, except: [:show]
   end
   root :to => "platforms#index"
   # The priority is based upon order of creation: first created -> highest priority.
