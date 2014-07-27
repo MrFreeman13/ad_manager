@@ -15,6 +15,6 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :rememberable, :validatable
 
-  validates_presence_of :name, :email, :admin
+  validates_presence_of :name, :email
   validates_uniqueness_of :email
 end
