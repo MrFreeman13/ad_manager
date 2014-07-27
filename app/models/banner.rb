@@ -17,5 +17,7 @@
 class Banner < ActiveRecord::Base
   belongs_to :platform
 
-  validates_presence_of :name, :code, :partner_url, :platform_id
+  validates_presence_of :name, :code, :partner_url, :platform_id, :max_views
+  validates_numericality_of :max_views
+  validates_format_of :partner_url, :with => /((?:https?\:\/\/|www\.)(?:[-a-z0-9]+\.)*[-a-z0-9]+.*)/i
 end
