@@ -1,0 +1,36 @@
+<%= form_for([@platform, @banner]) do |f| %>
+  <% if @banner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@banner.errors.count, "error") %> prohibited this banner from being saved:</h2>
+
+      <ul>
+      <% @banner.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name, autofocus: true %>
+    </div>
+
+    <div>
+      <%= label_tag :banner_code %>
+      <%= f.text_area :code %>
+    </div>
+
+    <div>
+      <%= f.label :partner_url %>
+      <%= f.text_field :partner_url %>
+    </div>
+
+    <div>
+      <%= f.label :max_views %>
+      <%= f.text_field :max_views %>
+    </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
