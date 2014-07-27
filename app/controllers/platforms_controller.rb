@@ -18,31 +18,24 @@ class PlatformsController < ApplicationController
 
   def create
     @platform = Platform.new(platform_params.permit(:name, :url))
-
-    respond_to do |format|
-      if @platform.save
-        redirect_to @platform, notice: 'Platform was successfully created.'
-      else
-        render :new
-      end
+    if @platform.save
+      redirect_to @platform, notice: 'Platform was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @platform.update(platform_params.permit(:name, :url))
-        redirect_to @platform, notice: 'Platform was successfully updated.'
-      else
-        render :edit
-      end
+    if @platform.update(platform_params.permit(:name, :url))
+      redirect_to @platform, notice: 'Platform was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @platform.destroy
-    respond_to do |format|
-      redirect_to platforms_url, notice: 'Platform was successfully destroyed.'
-    end
+    redirect_to platforms_url, notice: 'Platform was successfully destroyed.'
   end
 
   private
