@@ -5,7 +5,7 @@
 #  id                  :integer          not null, primary key
 #  name                :string(255)
 #  email               :string(255)
-#  admin               :boolean
+#  admin               :boolean          default(FALSE)
 #  created_at          :datetime
 #  updated_at          :datetime
 #  encrypted_password  :string(255)      default(""), not null
