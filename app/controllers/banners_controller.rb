@@ -1,5 +1,5 @@
 class BannersController < ApplicationController
-  before_action :set_platform
+  before_action :set_platform, except: [:add_click]
   before_action :set_banner, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -14,7 +14,7 @@ class BannersController < ApplicationController
   end
 
   def create
-    @banner = Banner.new(banner_params.permit(:name, :code, :partner_url, :max_views))
+    @banner = Banner.new(banner_params.permit(:name, :code, :max_views))
     @banner.platform = @platform
 
     if @banner.save
@@ -25,7 +25,7 @@ class BannersController < ApplicationController
   end
 
   def update
-    if @banner.update(banner_params.permit(:name, :code, :partner_url, :max_views))
+    if @banner.update(banner_params.permit(:name, :code, :max_views))
       redirect_to platform_banner_path(@platform, @banner), notice: 'Banner was successfully updated.'
     else
       render :edit
@@ -35,6 +35,14 @@ class BannersController < ApplicationController
   def destroy
     @banner.destroy
     redirect_to banners_url, notice: 'Banner was successfully destroyed.'
+  end
+
+  # Partners methods
+
+  def add_click
+    banner = Banner.find_by(:token => params[:token])
+    banner.clicks += 1
+    redirect_to params[:redir]
   end
 
   private

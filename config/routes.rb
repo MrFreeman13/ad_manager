@@ -3,9 +3,12 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :platforms do
-    resources :banners, except: [:show]
+    resources :banners
   end
   root :to => "platforms#index"
+
+  get 'platforms/:token' => 'platforms#show_banner', as: :show_banner
+  get 'banners/:token' => 'banners#add_click'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
