@@ -35,12 +35,20 @@ class Banner < ActiveRecord::Base
     true
   end
 
-  def select_for_showing(platform)
+  def self.select_for_showing(platform)
     platform.banners.order('updated_at asc').each do |element|
-      if element.views < max_views
+      if element.views < element.max_views
         return element
       end
     end
     false
+  end
+
+  def inc_clicks
+    self.update({:clicks => self.clicks+1})
+  end
+
+  def inc_views
+    self.update({:views => self.views+1})
   end
 end

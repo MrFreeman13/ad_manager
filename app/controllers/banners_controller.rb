@@ -18,7 +18,7 @@ class BannersController < ApplicationController
     @banner.platform = @platform
 
     if @banner.save
-      redirect_to platform_banner_path(@platform, @banner), notice: 'Banner was successfully created.'
+      redirect_to platform_banners_url, notice: 'Banner was successfully created.'
     else
       render :new
     end
@@ -26,7 +26,7 @@ class BannersController < ApplicationController
 
   def update
     if @banner.update(banner_params.permit(:name, :code, :max_views))
-      redirect_to platform_banner_path(@platform, @banner), notice: 'Banner was successfully updated.'
+      redirect_to platform_banners_url, notice: 'Banner was successfully updated.'
     else
       render :edit
     end
@@ -34,14 +34,13 @@ class BannersController < ApplicationController
 
   def destroy
     @banner.destroy
-    redirect_to banners_url, notice: 'Banner was successfully destroyed.'
+    redirect_to platform_banners_url, notice: 'Banner was successfully destroyed.'
   end
 
   # Partners methods
-
   def add_click
     banner = Banner.find_by(:token => params[:token])
-    banner.clicks += 1
+    banner.inc_clicks
     redirect_to params[:redir]
   end
 

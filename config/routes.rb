@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   root :to => "platforms#index"
 
-  get 'platforms/:token' => 'platforms#show_banner', as: :show_banner
+  get 'ad_provider/:token' => 'platforms#show_banner', as: :show_banner
   get 'banners/:token' => 'banners#add_click'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
