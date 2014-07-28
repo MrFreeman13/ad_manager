@@ -27,7 +27,7 @@ class Banner < ActiveRecord::Base
 
   def generate_banner_partner_code
     ad_url = self.code.match(/(https?:\/\/|www)\S+\"/).to_s
-    self.banner_partner_code = self.code.gsub(/(https?:\/\/|www)\S+\"/, "http://localhost:3000/banners/#{self.token}?redir=#{ad_url}")
+    self.banner_partner_code = self.code.gsub(/(https?:\/\/|www)\S+\"/, "#{root_url}banners/#{self.token}?redir=#{ad_url}")
   end
 
   def generate_token

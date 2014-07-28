@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
+  default_url_options :host => "http://localhost:3000/"
 
   resources :platforms do
     resources :banners
