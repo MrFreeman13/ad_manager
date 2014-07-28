@@ -38,6 +38,18 @@ class PlatformsController < ApplicationController
     redirect_to platforms_url, notice: 'Platform was successfully destroyed.'
   end
 
+  def show_banner
+    platform = Platform.find_by(:token => params[:token])
+    result = Banner.select_for_showing(platform)
+    if result
+      result.views += 1
+      render html: "#{result.banner_partner_code}".html_safe
+    else # All banners was showing more than max time
+      render html: "<strong>No banners available for showing</strong>".html_safe
+    end
+  end
+
+
   private
     def set_platform
       @platform = Platform.find(params[:id])
