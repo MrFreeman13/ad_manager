@@ -32,6 +32,8 @@ gem 'twitter-bootstrap-rails', '2.2.8'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'annotate', '~> 2.6.0'
+  gem 'pry', '0.10.0'
+  gem 'pry-debugger', '0.2.3'
 end
 
 
