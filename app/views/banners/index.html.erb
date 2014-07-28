@@ -12,6 +12,7 @@
   <tr>
     <th>Banner name</th>
     <th>Views</th>
+    <th>Max Views</th>
     <th>Clicks</th>
     <th>Actions</th>
   </tr>
@@ -19,8 +20,9 @@
   <tbody>
   <% @banners.each do |banner| %>
       <tr>
-        <td><%= link_to banner.name, platform_banner_path(@platform, banner) %></td>
+        <td><%= banner.name %></td>
         <td><%= banner.views %></td>
+        <td><%= banner.max_views %></td>
         <td><%= banner.clicks %></td>
         <td>
           <% if current_user && current_user.admin %>
