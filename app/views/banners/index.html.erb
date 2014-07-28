@@ -22,10 +22,14 @@
         <td><%= link_to banner.name, platform_banner_path(@platform, banner) %></td>
         <td><%= banner.views %></td>
         <td><%= banner.clicks %></td>
-        <td><%= link_to 'Edit', edit_platform_banner_path(@platform, banner) %> <%= link_to 'Destroy', platform_banner_path(@platform, banner), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <% if current_user && current_user.admin %>
+              <%= link_to 'Edit', edit_platform_banner_path(@platform, banner) %> <%= link_to 'Destroy', platform_banner_path(@platform, banner), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+          </td>
       </tr>
   <% end %>
   </tbody>
 </table>
 <br />
-<%= link_to 'New Banner', new_platform_banner_path %>
+<% if current_user && current_user.admin%><%= link_to 'New Banner', new_platform_banner_path %><%end%>

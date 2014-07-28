@@ -13,15 +13,15 @@
       <tr>
         <td><%= link_to platform.name, platform_banners_path(platform.id) %></td>
         <td><%= platform.url %></td>
-        <td><%= link_to 'Edit', edit_platform_path(platform) %> <%= link_to 'Destroy', platform, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <% if current_user && current_user.admin %>
+            <%= link_to 'Edit', edit_platform_path(platform) %> <%= link_to 'Destroy', platform, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
       </tr>
   <% end %>
   </tbody>
 </table>
-
-
-
 <br>
 
-<%= link_to 'New Platform', new_platform_path %><br />
+<% if current_user && current_user.admin%><%= link_to 'New Platform', new_platform_path %><br /><%end%>
 
