@@ -6,6 +6,9 @@ class BannersController < ApplicationController
     @banners = Banner.all
   end
 
+  def show
+  end
+
   def new
     @banner = Banner.new
   end
