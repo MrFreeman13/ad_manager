@@ -1,5 +1,5 @@
 class PlatformsController < ApplicationController
-  before_action :check_authorization, except: [:home]
+  before_action :check_authorization, except: [:home, :show_banner]
   before_action :set_platform, only: [:show, :edit, :update, :destroy]
 
   def index
