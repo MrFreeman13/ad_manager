@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
   get 'ad_provider/:token' => 'platforms#show_banner', as: :show_banner
   get 'banners/:token' => 'banners#add_click'
+
+  # Route for testing platform
+
+  get 'partner_site' => 'static_pages#partner_site'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
