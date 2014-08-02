@@ -9,4 +9,10 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << [:name, :admin]
   end
+
+  def check_authorization
+    if !current_user
+      redirect_to home_path
+    end
+  end
 end

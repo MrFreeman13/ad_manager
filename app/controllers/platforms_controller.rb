@@ -1,4 +1,5 @@
 class PlatformsController < ApplicationController
+  before_action :check_authorization, except: [:home]
   before_action :set_platform, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -47,6 +48,10 @@ class PlatformsController < ApplicationController
     else # All banners was showing more than max time
       render html: "<strong>No banners available for showing</strong>".html_safe
     end
+  end
+
+  def home
+
   end
 
 

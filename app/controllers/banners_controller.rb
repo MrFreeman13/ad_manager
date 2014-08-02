@@ -1,4 +1,5 @@
 class BannersController < ApplicationController
+  before_action :check_authorization
   before_action :set_platform, except: [:add_click]
   before_action :set_banner, only: [:show, :edit, :update, :destroy]
 
